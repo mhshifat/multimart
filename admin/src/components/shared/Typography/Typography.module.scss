@@ -1,0 +1,35 @@
+.Typography {
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 2.4rem;
+
+  &__Danger {
+    color: hsl(var(--danger-clr));
+  }
+
+  &__Base {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+  }
+
+  &__Medium {
+    line-height: 2.4rem;
+    font-size: 1.4rem;
+  }
+
+  &__Regular {
+    font-weight: 400;
+  }
+
+  &__WMedium {
+    font-weight: 500;
+  }
+
+  &__WSemiBold {
+    font-weight: 600;
+  }
+
+  &__WBold {
+    font-weight: 600;
+  }
+}

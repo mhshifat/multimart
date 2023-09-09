@@ -1,0 +1,22 @@
+.ChevronIcon {
+  width: max-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__Up {
+    transform: rotate(0deg);
+  }
+
+  &__Down {
+    transform: rotate(180deg);
+  }
+
+  &__Left {
+    transform: rotate(270deg);
+  }
+
+  &__Right {
+    transform: rotate(90deg);
+  }
+}

@@ -1,0 +1,122 @@
+.NumberField {
+  width: 100%;
+  height: auto;
+
+  &__Input {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    border-radius: inherit;
+    position: relative;
+
+    & > input {
+      width: 100%;
+      outline: transparent;
+      height: var(--element-size);
+      border: none;
+      border-radius: inherit;
+      padding: 0 1.5rem;
+      caret-color: hsl(var(--primary-clr));
+      font-size: 1.5rem;
+      font-weight: 500;
+      line-height: var(--element-size);
+      color: var(--heading-clr);
+    }
+  }
+
+  &__Focus {
+    border: 1px solid hsl(var(--border-clr));
+    border-radius: var(--radius);
+    transition: border-color 240ms ease-in;
+
+    &:focus-within {
+      border-color: hsl(var(--primary-clr));
+    }
+  }
+
+  &__BtnEle {
+    width: auto;
+    height: var(--element-size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1.5rem;
+    flex-shrink: 0;
+    min-width: var(--element-size);
+    border-radius: inherit;
+    font-weight: 500;
+    font-size: 1.5rem;
+  }
+
+  &__LabelInside {
+    padding: 0 1.5rem;
+    position: relative;
+    top: 6px;
+    font-size: 1.3rem !important;
+  }
+
+  &__InputWrapper {
+    border-radius: inherit;
+    display: flex;
+    align-items: center;
+  }
+
+  &__Error {
+    border-color: hsl(var(--danger-clr));
+  }
+
+  &__Label,
+  &__LabelInside {
+    color: hsl(var(--heading-clr));
+  }
+
+  &__Counter {
+    position: absolute;
+    top: 0;
+    right: 0;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    padding: 2rem 1rem;
+
+    & > span {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 240ms ease-in;
+
+      &:hover {
+        transform: scale(1.2);
+        background: hsl(var(--primary-clr));
+        border-radius: var(--radius);
+        
+        & > span {
+          position: unset !important;
+
+          & svg path {
+            stroke: hsl(var(--mode-clr));
+          }
+        }
+      }
+
+      &:first-child {
+        & > span {
+          position: relative;
+          top: 2px;
+        }
+      }
+      &:last-child {
+        & > span {
+          position: relative;
+          bottom: 2px;
+        }
+      }
+    }
+  }
+}

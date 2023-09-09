@@ -1,3 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  // Colors
+  --primary-clr: 212, 100%, 43%;
+  --heading-clr: 221, 74%, 23%;
+  --border-clr: 0, 0%, 95%;
+  --danger-clr: 0, 72%, 51%;
+  --mode-clr: 0, 0%, 100%;
+
+  // Fonts
+  --primary-font: 'Open Sans', sans-serif;
+
+  // Util's
+  --element-size: 3.8rem;
+  --radius: .4rem;
+}
+
 html {
   box-sizing: border-box;
   font-size: 10px;
@@ -21,4 +39,5 @@ body {
   line-height: 2.4rem;
   padding: 0;
   margin: 0;
+  font-family: var(--primary-font);
 }

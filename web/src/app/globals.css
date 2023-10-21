@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .product-image-shadow {
+    filter: drop-shadow(-8.50807px 6.80646px 18.71776px 0px rgba(0, 0, 0, 0.14));
+  }
+
+  .bg-backdrop {
+    background: linear-gradient(0deg, rgba(0,0,0,.56), rgba(0,0,0,.56));
+  }
+}

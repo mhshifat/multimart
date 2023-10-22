@@ -1,6 +1,6 @@
 import { lazy } from "react";
 
-enum CollectionFilters {
+export enum CollectionFiltersEnum {
     Collections = "collections",
     Sizes = "sizes",
     Prices = "prices",
@@ -11,7 +11,7 @@ enum CollectionFilters {
     PercentSales = "percent sales"
 }
 
-enum CollectionFilterParamKeys {
+export enum CollectionFilterParamKeys {
     Sizes = "sizes",
     Prices = "prices",
     Colors = "colors",
@@ -23,7 +23,7 @@ enum CollectionFilterParamKeys {
 
 export const COLLECTIONS_FILTERS = [
     {
-        title: CollectionFilters.Collections,
+        title: CollectionFiltersEnum.Collections,
         paramKey: null,
         options: [
             {
@@ -42,7 +42,7 @@ export const COLLECTIONS_FILTERS = [
         popup: lazy(()=>import('./grid-list-popup-view'))
     },
     {
-        title: CollectionFilters.Sizes,
+        title: CollectionFiltersEnum.Sizes,
         paramKey: CollectionFilterParamKeys.Sizes,
         options: [
             {
@@ -61,7 +61,7 @@ export const COLLECTIONS_FILTERS = [
         popup: lazy(()=>import('./grid-list-popup-view'))
     },
     {
-        title: CollectionFilters.Prices,
+        title: CollectionFiltersEnum.Prices,
         paramKey: CollectionFilterParamKeys.Prices,
         options: [
             {
@@ -80,7 +80,7 @@ export const COLLECTIONS_FILTERS = [
         popup: lazy(()=>import('./price-filter-popup-view'))
     },
     {
-        title: CollectionFilters.Colors,
+        title: CollectionFiltersEnum.Colors,
         paramKey: CollectionFilterParamKeys.Colors,
         options: [
             {
@@ -99,7 +99,7 @@ export const COLLECTIONS_FILTERS = [
         popup: lazy(()=>import('./grid-list-popup-view'))
     },
     {
-        title: CollectionFilters.Brands,
+        title: CollectionFiltersEnum.Brands,
         paramKey: CollectionFilterParamKeys.Brands,
         options: [
             {
@@ -118,7 +118,7 @@ export const COLLECTIONS_FILTERS = [
         popup: lazy(()=>import('./grid-list-popup-view'))
     },
     {
-        title: CollectionFilters.Occations,
+        title: CollectionFiltersEnum.Occations,
         paramKey: CollectionFilterParamKeys.Occations,
         options: [
             {
@@ -134,7 +134,7 @@ export const COLLECTIONS_FILTERS = [
         popup: lazy(()=>import('./grid-list-popup-view'))
     },
     {
-        title: CollectionFilters.PercentSales,
+        title: CollectionFiltersEnum.PercentSales,
         paramKey: CollectionFilterParamKeys.PercentSales,
         options: [
             {

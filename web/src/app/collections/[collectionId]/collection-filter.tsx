@@ -1,7 +1,9 @@
 "use client";
 
-import { Button } from "@/components/ui";
+import { Bubble, Button } from "@/components/ui";
 import useCollectionFilters from "./use-collection-filters";
+import { COLLECTIONS_FILTERS, CollectionFiltersEnum } from "./constants";
+import GridListPopupView from "./grid-list-popup-view";
 
 export default function CollectionFilters() {
   const { filters } = useCollectionFilters();
@@ -10,9 +12,10 @@ export default function CollectionFilters() {
     <div className="flex items-start justify-between">
       <div className="flex items-center gap-[30px] flex-wrap">
         {filters?.map((filter) => (
-          <Button
+          <Bubble key={filter?.title} count={()=>0} hideOnZero={filter?.title === CollectionFiltersEnum.Collections}>
+              <Button
             className="bg-white flex items-center whitespace-nowrap gap-[10px]"
-            key={filter?.title}
+            
             onClick={() => console.log("clicked")}
           >
             <span className="font-Mulish text-[16px] text-black font-[700] uppercase leading-[120%] -tracking-[0.32px] text-center whitespace-nowrap">
@@ -39,6 +42,8 @@ export default function CollectionFilters() {
               />
             </svg>
           </Button>
+          </Bubble>
+          
         ))}
         <div className="flex items-center gap-[12px]">
           <span className="bg-[#f5f5f5] flex items-center justify-between whitespace-nowrap gap-[10px] py-[5px] px-[15px] rounded-[8px] min-w-[192px]">

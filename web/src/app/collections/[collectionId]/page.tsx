@@ -1,7 +1,12 @@
+import { Container } from "@/components/shared";
+import CollectionProducts from "./collections-products";
+
 export default function CollectionPage() {
   return (
-    <div>
-      <p>Collection Page</p>
+    <div className="w-full">
+      <Container>
+        <CollectionProducts />
+      </Container>
     </div>
   )
 }

@@ -12,11 +12,10 @@ import { clsx } from "@/lib/utils";
 
 export default function ProductCard() {
   const { theme } = useTheme();
-  console.log({ theme });
+  const [coverImage, setCoverImage] = useState<string>(ProductOne as unknown as string);
   
   const percentSale = 20;
   const isPercentSaleType = percentSale > 0;
-  const [coverImage, setCoverImage] = useState<string>(ProductOne as unknown as string);
 
   return (
     <Link href='' className="w-full">

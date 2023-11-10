@@ -11,3 +11,7 @@
     background: linear-gradient(0deg, rgba(0,0,0,.56), rgba(0,0,0,.56));
   }
 }
+
+html {
+  font-size: 10px;
+}

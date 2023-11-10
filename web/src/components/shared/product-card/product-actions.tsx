@@ -1,3 +1,7 @@
+"use client";
+import { useTheme } from "@/hooks";
+import { clsx } from "@/lib/utils";
+
 const ACTION_BUTTONS = [
   {
     type: "wishlist",
@@ -58,10 +62,15 @@ const ACTION_BUTTONS = [
 ]
 
 export default function ProductActions() {
+  const { theme } = useTheme();
+
   return (
     <span className="flex flex-col gap-[18px] absolute top-[10px] right-[10px] md:top-[22px] md:right-[22px]">
       {ACTION_BUTTONS.map((item) => (
-        <button key={item.type} className="w-[45px] h-[45px] bg-white rounded-full flex items-center justify-center">
+        <button key={item.type} className={clsx("w-[45px] h-[45px] rounded-full flex items-center justify-center", {
+          "bg-white": theme === 'light',
+          "bg-[rgb(125,133,144)]": theme === 'dark'
+        })}>
           {item.icon}
         </button>
       ))}

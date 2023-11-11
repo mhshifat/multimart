@@ -12,38 +12,37 @@ export default function CollectionFilters() {
     <div className="flex items-start justify-between">
       <div className="flex items-center gap-[30px] flex-wrap">
         {filters?.map((filter) => (
-          <Bubble key={filter?.title} count={()=>0} hideOnZero={filter?.title === CollectionFiltersEnum.Collections}>
-              <Button
-            className="bg-white flex items-center whitespace-nowrap gap-[10px]"
-            
-            onClick={() => console.log("clicked")}
-          >
-            <span className="font-Mulish text-[16px] text-black font-[700] uppercase leading-[120%] -tracking-[0.32px] text-center whitespace-nowrap">
-              {filter?.title}
-            </span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height={24}
-              width={24}
-              fill="none"
-              viewBox="0 0 24 24"
+          <Bubble key={filter?.title} count={() => 0} hideOnZero={filter?.title === CollectionFiltersEnum.Collections}>
+            <Button
+              className="bg-white flex items-center whitespace-nowrap gap-[10px]"
+              onClick={() => console.log("clicked")}
             >
-              <ellipse
-                cx="12.003"
-                cy={12}
-                rx={12}
-                ry="12.0009"
-                transform="rotate(90 12.003 12)"
-                fill="#F5F5F5"
-              />
-              <path
-                d="M12.5039 7.2002C12.5039 6.92405 12.28 6.7002 12.0039 6.7002C11.7278 6.7002 11.5039 6.92405 11.5039 7.2002L12.5039 7.2002ZM11.6504 16.3537C11.8456 16.549 12.1622 16.549 12.3575 16.3537L15.5394 13.1718C15.7347 12.9765 15.7347 12.6599 15.5394 12.4647C15.3442 12.2694 15.0276 12.2694 14.8323 12.4647L12.0039 15.2931L9.17548 12.4647C8.98022 12.2694 8.66363 12.2694 8.46837 12.4647C8.27311 12.6599 8.27311 12.9765 8.46837 13.1718L11.6504 16.3537ZM11.5039 7.2002L11.5039 16.0002L12.5039 16.0002L12.5039 7.2002L11.5039 7.2002Z"
-                fill="black"
-              />
-            </svg>
-          </Button>
+              <span className="font-Mulish text-[16px] text-black font-[700] uppercase leading-[120%] -tracking-[0.32px] text-center whitespace-nowrap">
+                {filter?.title}
+              </span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height={24}
+                width={24}
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <ellipse
+                  cx="12.003"
+                  cy={12}
+                  rx={12}
+                  ry="12.0009"
+                  transform="rotate(90 12.003 12)"
+                  fill="#F5F5F5"
+                />
+                <path
+                  d="M12.5039 7.2002C12.5039 6.92405 12.28 6.7002 12.0039 6.7002C11.7278 6.7002 11.5039 6.92405 11.5039 7.2002L12.5039 7.2002ZM11.6504 16.3537C11.8456 16.549 12.1622 16.549 12.3575 16.3537L15.5394 13.1718C15.7347 12.9765 15.7347 12.6599 15.5394 12.4647C15.3442 12.2694 15.0276 12.2694 14.8323 12.4647L12.0039 15.2931L9.17548 12.4647C8.98022 12.2694 8.66363 12.2694 8.46837 12.4647C8.27311 12.6599 8.27311 12.9765 8.46837 13.1718L11.6504 16.3537ZM11.5039 7.2002L11.5039 16.0002L12.5039 16.0002L12.5039 7.2002L11.5039 7.2002Z"
+                  fill="black"
+                />
+              </svg>
+            </Button>
           </Bubble>
-          
+
         ))}
         <div className="flex items-center gap-[12px]">
           <span className="bg-[#f5f5f5] flex items-center justify-between whitespace-nowrap gap-[10px] py-[5px] px-[15px] rounded-[8px] min-w-[192px]">

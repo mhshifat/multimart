@@ -1,3 +1,4 @@
+import Providers from '@/components/providers';
 import './globals.css'
 import type { Metadata } from 'next'
 import { Open_Sans, Mulish } from 'next/font/google'
@@ -32,7 +33,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${openSans.variable} ${mulish.variable}`}>{children}</body>
+      <body className={`${openSans.variable} ${mulish.variable}`}>
+        <Providers>
+          {children}
+        </Providers>
+      </body>
     </html>
   )
 }

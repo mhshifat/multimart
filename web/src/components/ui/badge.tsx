@@ -1,16 +1,26 @@
+import { cn } from "@/lib/utils";
+import { VariantProps, cva } from "class-variance-authority";
 import { HTMLAttributes, PropsWithChildren } from "react";
 
-type BadgeVariants = "danger" | "warning";
+interface BadgeProps extends HTMLAttributes<HTMLSpanElement>, VariantProps<typeof variantClasses> {}
 
-interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
-  variant: BadgeVariants;
-}
+const variantClasses = cva("rounded-lg", {
+  variants: {
+    variant: {
+      default: "bg-background",
+      danger: "bg-destructive",
+    },
+    size: {
+      default: "p-0",
+      small: "py-[.5rem] px-[1rem]",
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+    size: "default",
+  },
+})
 
-const variantClasses: Record<BadgeVariants, string> = {
-  danger: "bg-[#FC0000] text-white",
-  warning: "bg-[#EBC436] text-black",
-}
-
-export default function Badge({ children, variant, className }: PropsWithChildren<BadgeProps>) {
-  return <span className={`py-[6px] px-[8px] rounded-[7px] ${variantClasses[variant]} ${className}`}>{children}</span>
+export default function Badge({ children, variant, size, className }: PropsWithChildren<BadgeProps>) {
+  return <span className={cn(variantClasses({ variant, size, className }))}>{children}</span>
 }

@@ -6,6 +6,8 @@ import { clsx } from "@/lib/utils";
 import CollectionFilters from "./collection-filter"
 import GridListPopupView from "./grid-list-popup-view"
 import PriceFilterPopupView from "./price-filter-popup-view";
+import { Checkbox } from "@/components/ui";
+import SortFilterPopup from "./sort-filter-popup";
 
 export default function CollectionPage() {
   const { theme } = useTheme();
@@ -36,6 +38,9 @@ export default function CollectionPage() {
         },
       ]}/>
       <PriceFilterPopupView options={{min: 0, max: 200}} title="price"/>
+      <Checkbox>
+      </Checkbox>
+      <SortFilterPopup onChange={(value)=>console.log(value)} />
         <CollectionProducts />
       </Container>
     </div>

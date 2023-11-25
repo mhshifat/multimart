@@ -1,7 +1,8 @@
 import { Checkbox } from '@/components/ui';
+import { useTheme } from '@/hooks';
 import {useMemo} from 'react';
 
-export const SORT_ITEMS = {
+export const SORT_ITEMS: Record<string, string> = {
   "Best Selling": "BEST_SELLING",
   "Alphabetically, Z-A": "TITLE:DESC",
   "Alphabetically, A-Z": "TITLE:ASC",
@@ -11,16 +12,16 @@ export const SORT_ITEMS = {
   "Date, new to Old": "CREATED:DESC",
 }
 
-export default function SortFilterPopup({onChange}) {
+export default function SortFilterPopup({onChange}: {onChange: (value: string)  => void}) {
   const comParams = new URLSearchParams(window.location.search).get('sort');
-  const sortedItems = useMemo(
+  const sortedItems: Record<string, string> = useMemo(
     () =>
       Object.values(SORT_ITEMS).reduce((acc, val) => {
         acc[val] = Object.entries(SORT_ITEMS).find(
           (item) => item[1] === val,
-        )[0];
+        )![0];
         return acc;
-      }, {}),
+      }, {} as Record<string, string>),
     [SORT_ITEMS],
   );
 
@@ -32,8 +33,7 @@ export default function SortFilterPopup({onChange}) {
       }}
     >
       <Checkbox
-        single
-        defaultValue={sortedItems[decodeURIComponent(comParams)]}
+        defaultValue={sortedItems[decodeURIComponent(comParams!)]}
         checkedIcon={
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -78,7 +78,7 @@ export default function SortFilterPopup({onChange}) {
               className={`w-full flex items-center gap-[8px] ${
                 itemIndex === 0
                   ? 'pb-[15px]'
-                  : itemIndex === totalItem - 1
+                  : itemIndex === totalItem! - 1
                   ? 'pt-[15px]'
                   : 'py-[15px]'
               }`}

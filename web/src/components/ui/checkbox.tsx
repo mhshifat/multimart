@@ -1,33 +1,33 @@
-import {Children, JSXElementConstructor, PropsWithChildren, ReactElement, ReactNode, cloneElement, useEffect, useState} from 'react';
+import {Children, PropsWithChildren, ReactElement, ReactNode, cloneElement, useEffect, useState} from 'react';
 
 interface IRenderItem {
         checked: boolean
         value: string
-        icon: JSX.Element,
-        itemIndex: number,
-        totalItem: number,
+        icon?: ReactElement,
+        itemIndex?: number,
+        totalItem?: number,
 } 
 
 interface CheckboxItemProps {
   value: string,
-  className: string[],
-  onChange: (value: string, checked: boolean) => void,
-  renderItem: (values: IRenderItem)=>ReactNode
-  checkedIcon: JSX.Element,
-  uncheckedIcon: JSX.Element,
-  itemIndex: number,
-  totalItem: number,
-  values: string[],
+  className?: string[],
+  onChange?: (value: string, checked: boolean) => void,
+  renderItem?: (values: IRenderItem)=>ReactNode
+  checkedIcon?: ReactElement,
+  uncheckedIcon?: ReactElement,
+  itemIndex?: number,
+  totalItem?: number,
+  values?: string[],
 }
 
 interface CheckboxProps {
-  className: string,
-  onChange: (value: string) => void,
-  renderItem: (values: IRenderItem)=>ReactNode,
-  checkedIcon: JSX.Element,
-  uncheckedIcon: JSX.Element,
-  single: boolean,
-  defaultValue: string,
+  className?: string,
+  onChange?: (value: string) => void,
+  renderItem?: (values: IRenderItem)=>ReactNode,
+  checkedIcon?: ReactElement,
+  uncheckedIcon?: ReactElement,
+  single?: boolean,
+  defaultValue?: string,
 }
 
 const CheckboxItem = ({
@@ -39,7 +39,7 @@ const CheckboxItem = ({
   uncheckedIcon,
   itemIndex,
   totalItem,
-  values,
+  values = [],
 }: CheckboxItemProps) => {
   const [checked, setChecked] = useState(false);
 
@@ -136,7 +136,7 @@ export default function Checkbox({
   checkedIcon,
   uncheckedIcon,
   single,
-  defaultValue,
+  defaultValue = '',
 }: PropsWithChildren<CheckboxProps>) {
   const [values, setValues] = useState<string[]>([]);
 
@@ -146,8 +146,8 @@ export default function Checkbox({
 
   return (
     <div className={className}>
-      {Children.map(children, (child: ReactElement<any, string | JSXElementConstructor<any>>, index) =>
-        cloneElement(child, {
+      {Children.map(children, (child, index) =>
+        cloneElement(child as ReactElement, {
           itemIndex: index,
           totalItem: Children.count(children),
           renderItem,

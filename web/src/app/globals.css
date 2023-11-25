@@ -11,3 +11,31 @@
     background: linear-gradient(0deg, rgba(0,0,0,.56), rgba(0,0,0,.56));
   }
 }
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 31%;
+    --border: 0 0% 96%;
+    --border-foreground: 210 40% 98%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+    --backdrop: 216 28% 7%;
+    --backdrop-foreground: 215 20% 86%;
+  }
+
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --border: 0 0% 31%;
+    --border-foreground: 215 20% 86%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+    --backdrop: 0 0% 100%;
+    --backdrop-foreground: 0 0% 100%;
+  }
+}
+
+html {
+  font-size: 10px;
+}

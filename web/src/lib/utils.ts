@@ -1,11 +1,6 @@
-export function clsx(regularClasses: string, options?: Record<string, boolean>) {
-  const classes: string[] = [`${regularClasses} transition`];
+import clsx, { ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
 
-  options && Object.entries(options).forEach(([classesStr, isValid]) => {
-    if (isValid) {
-      classes.push(classesStr);
-    }
-  })
-  
-  return classes.join(" ");
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
 }

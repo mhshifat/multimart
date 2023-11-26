@@ -1,21 +1,21 @@
-import { useEffect, useState } from 'react';
-import Portal from './portal';
+import { DetailedHTMLProps, HTMLAttributes, LegacyRef, useEffect, useState } from 'react';
+import { Portal } from '../shared';
 import { DayPicker } from 'react-day-picker';
 import { usePopper } from 'react-popper';
 import { format } from 'date-fns';
 
 interface DatePickerProps {
     isMobile: boolean
-    onChange: ()=>void
-    placeholder: string
-    value: Date
+    onChange: (args: Date | undefined)=>void
+    placeholder?: string
+    value: Date | undefined
 }
 
 export default function DatePicker({ isMobile, onChange, placeholder = 'Select a date', value }: DatePickerProps) {
-  const [selected, setSelected] = useState(value);
+  const [selected, setSelected] = useState<Date | undefined>(value);
   const [showPicker, setShowPicker] = useState(false);
-  const [referenceElement, setReferenceElement] = useState(null);
-  const [popperElement, setPopperElement] = useState(null);
+  const [referenceElement, setReferenceElement] = useState<HTMLDivElement | null>(null);
+  const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null);
   const [arrowElement, setArrowElement] = useState(null);
   const { styles, attributes } = usePopper(referenceElement, popperElement, {
     placement: "bottom-end",
@@ -27,8 +27,8 @@ export default function DatePicker({ isMobile, onChange, placeholder = 'Select a
 
   useEffect(() => {
     if (!popperElement || !referenceElement) return;
-    const handleOutsideClick = (e) => {
-      if (!popperElement.contains(e.target) && !referenceElement.contains(e.target)) {
+    const handleOutsideClick = (e: MouseEvent) => {
+      if (!popperElement.contains(e.target as Node) && !referenceElement.contains(e.target as Node)) {
         setShowPicker(false);
       }
     }
@@ -40,8 +40,8 @@ export default function DatePicker({ isMobile, onChange, placeholder = 'Select a
 
   return (
     <>
-      <div ref={setReferenceElement} onClick={() => setShowPicker(value => !value)} className={`${isMobile ? "h-[49px]" : "relative h-[60px]"} cursor-pointer w-full form-input border border-solid border-[#DCDCDC] rounded-lg text-black text-sm font-normal font-Open-Sans ${isMobile ? "text-[14px] tracking-[0.28px]" : "text-[16px] tracking-[0.48px]"} font-[400] leading-[140%] flex items-center gap-5`}>
-        <span className={`flex-1 ${selected ? "text-[#000]" : "text-[#9C9C9C]"} font-Open-Sans text-[16px] font-[400] leading-[140%] tracking-[0.76px] lowercase`}>{selected ? format(new Date(selected), "MM/dd/yyyy") : placeholder}</span>
+      <div ref={setReferenceElement} onClick={() => setShowPicker(value => !value)} className={`${isMobile ? "h-[49px]" : "relative h-[60px]"} form-input font-Open-Sans w-full cursor-pointer rounded-lg border border-solid border-[#DCDCDC] text-sm font-normal text-black ${isMobile ? "text-[14px] tracking-[0.28px]" : "text-[16px] tracking-[0.48px]"} flex items-center gap-5 font-[400] leading-[140%]`}>
+        <span className={`flex-1 ${selected ? "text-[#000]" : "text-[#9C9C9C]"} font-Open-Sans text-[16px] font-[400] lowercase leading-[140%] tracking-[0.76px]`}>{selected ? format(new Date(selected), "MM/dd/yyyy") : placeholder}</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width={18}
@@ -93,7 +93,7 @@ export default function DatePicker({ isMobile, onChange, placeholder = 'Select a
       </div>
       {showPicker && (
         <Portal>
-          <div ref={setPopperElement} style={{...styles.popper, ...(referenceElement?.getBoundingClientRect()?.width !== undefined && referenceElement?.getBoundingClientRect()?.width > 300) ?{width: referenceElement?.getBoundingClientRect()?.width}:{} }} {...attributes.popper} className='bg-white shadow-md rounded-lg [&_.rdp-month]:w-full [&_.rdp-table]:max-w-full [&_.rdp-table]:w-full [&_.rdp-cell>.rdp-button]:w-full [&_.rdp-cell>.rdp-button]:aspect-square [&_.rdp-cell>.rdp-button]:max-w-full [&_.rdp-cell>.rdp-button]:h-auto [&_.rdp-cell>.rdp-button.rdp-day_selected]:bg-[#000]'>
+          <div ref={setPopperElement} style={{...styles.popper, ...(referenceElement?.getBoundingClientRect()?.width !== undefined && referenceElement?.getBoundingClientRect()?.width > 300) ?{width: referenceElement?.getBoundingClientRect()?.width}:{} }} {...attributes.popper} className='rounded-lg bg-white shadow-md [&_.rdp-cell>.rdp-button.rdp-day_selected]:bg-[#000] [&_.rdp-cell>.rdp-button]:aspect-square [&_.rdp-cell>.rdp-button]:h-auto [&_.rdp-cell>.rdp-button]:w-full [&_.rdp-cell>.rdp-button]:max-w-full [&_.rdp-month]:w-full [&_.rdp-table]:w-full [&_.rdp-table]:max-w-full'>
             <DayPicker
               mode="single"
               selected={selected}

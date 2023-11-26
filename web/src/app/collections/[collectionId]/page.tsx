@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import CollectionFilters from "./collection-filter"
 import GridListPopupView from "./grid-list-popup-view"
 import PriceFilterPopupView from "./price-filter-popup-view";
-import { Checkbox, Dialog } from "@/components/ui";
+import { Checkbox, DatePicker, Dialog } from "@/components/ui";
 import SortFilterPopup from "./sort-filter-popup";
 export default function CollectionPage() {
   const isMobile = false;
@@ -34,6 +34,7 @@ export default function CollectionPage() {
       <PriceFilterPopupView options={{min: 0, max: 200}} title="price"/>
       <Checkbox>
       </Checkbox>
+      <DatePicker isMobile={false} onChange={(value) => console.log(value)} value={undefined} />
       <SortFilterPopup onChange={(value)=>console.log(value)} />
         <CollectionProducts />
       </Container>
@@ -58,6 +59,7 @@ export default function CollectionPage() {
           </Content>
         )}
       </Dialog>
+      
     </div>
   )
 }
